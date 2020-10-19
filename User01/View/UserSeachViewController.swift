@@ -155,14 +155,15 @@ extension UserSearchViewController: UITableViewDataSource {
         
         cell.textLabel?.text = userData.name
         cell.detailTextLabel?.text = userData.type
+        cell.imageView?.clipsToBounds = true
+        cell.imageView?.contentMode = .scaleAspectFit
+        cell.imageView?.frame.size = CGSize(width: 64, height: 64)
         
-        //Tips UITableViewにインタネットからダウンロードした画像を設定するときは一度だみ-画像を指定してからaf.setImage(withURL:)する
+        //Tips UITableViewにインターネットからダウンロードした画像を設定するときは一度ダミー画像を指定してからaf.setImage(withURL:)する
         cell.imageView?.image = UIImage(named: "loading")
         if let icon = userData.icon, let imageUrl = URL(string: icon) {
             cell.imageView?.af.setImage(withURL: imageUrl)
         }
-        
-        
         
         return cell
     }
