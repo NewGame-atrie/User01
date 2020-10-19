@@ -149,10 +149,6 @@ extension UserSearchViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
         
-        
-        //cell.userData = userData
-        //return cell
-        
         cell.textLabel?.text = userData.name
         cell.detailTextLabel?.text = userData.type
         cell.imageView?.clipsToBounds = true
