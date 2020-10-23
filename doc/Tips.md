@@ -18,5 +18,11 @@ self.navigationController?.pushViewController(
 )
 ```
 
-- itsm
-- aaaa
+##カスタムセル
+
+ cell.textLabel?.text = userData.name　//
+        cell.detailTextLabel?.text = userData.type　//詳細テキスト
+        cell.imageView?.image = UIImage(userData.icon)
+        cell.imageView?.clipsToBounds = true　//UIImageView内で画像を表示
+        cell.imageView?.contentMode = .scaleAspectFit　//
+        cell.imageView?.frame.size = CGSize(width: 64, height: 64)

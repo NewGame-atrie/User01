@@ -31,6 +31,9 @@ class UserSearchViewController: UIViewController {
         self.tableView.dataSource = self
         self.view.addSubview(self.tableView)
         
+        //cellの登録
+        self.tableView.register(UserDataCell.self, forCellReuseIdentifier: "UserDataCell")
+        
         setupSearch()
     }
 
@@ -145,21 +148,8 @@ extension UserSearchViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let userData : UserData = self.userList[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-        
-        cell.textLabel?.text = userData.name
-        cell.detailTextLabel?.text = userData.type
-        cell.imageView?.clipsToBounds = true
-        cell.imageView?.contentMode = .scaleAspectFit
-        cell.imageView?.frame.size = CGSize(width: 64, height: 64)
-        
-        //Tips UITableViewにインターネットからダウンロードした画像を設定するときは一度ダミー画像を指定してからaf.setImage(withURL:)する
-        cell.imageView?.image = UIImage(named: "loading")
-        if let icon = userData.icon, let imageUrl = URL(string: icon) {
-            cell.imageView?.af.setImage(withURL: imageUrl)
-        }
+        let cell : UserDataCell = tableView.dequeueReusableCell(withIdentifier: "UserDataCell", for: indexPath) as! UserDataCell
+        cell.user = self.userList[indexPath.row]
         
         return cell
     }

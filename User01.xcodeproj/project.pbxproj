@@ -10,6 +10,7 @@
 		3A1AC4A7252FE53C0018C587 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1AC4A6252FE53C0018C587 /* UserDetailViewController.swift */; };
 		3A1AC4AA252FE5F50018C587 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1AC4A9252FE5F50018C587 /* UserData.swift */; };
 		3A28A6BF252B64BA0091D7DC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A28A6BE252B64BA0091D7DC /* Alamofire.framework */; };
+		3A4C7A29254254B600C26271 /* UserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C7A28254254B600C26271 /* UserDataCell.swift */; };
 		3A6EC12A25392FD3006FB826 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6EC12925392FD3006FB826 /* AlamofireImage.framework */; };
 		3AE099602526B28900473C08 /* UserSeachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0995F2526B28900473C08 /* UserSeachViewController.swift */; };
 		3AE2750E2519971900A6A691 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2750D2519971900A6A691 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 		3A1AC4A6252FE53C0018C587 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		3A1AC4A9252FE5F50018C587 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		3A28A6BE252B64BA0091D7DC /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		3A4C7A28254254B600C26271 /* UserDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataCell.swift; sourceTree = "<group>"; };
 		3A6EC12925392FD3006FB826 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		3AB52D3F252CB727003BB63B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3AE0995F2526B28900473C08 /* UserSeachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeachViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 		3A1AC4AC252FE6CE0018C587 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3A4C7A27254253EF00C26271 /* Cell */,
 				3AE0995F2526B28900473C08 /* UserSeachViewController.swift */,
 				3A1AC4A6252FE53C0018C587 /* UserDetailViewController.swift */,
 			);
@@ -82,6 +85,14 @@
 				3A28A6BE252B64BA0091D7DC /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A4C7A27254253EF00C26271 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3A4C7A28254254B600C26271 /* UserDataCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		3AE275012519971900A6A691 = {
@@ -212,6 +223,7 @@
 			files = (
 				3A1AC4A7252FE53C0018C587 /* UserDetailViewController.swift in Sources */,
 				3AE099602526B28900473C08 /* UserSeachViewController.swift in Sources */,
+				3A4C7A29254254B600C26271 /* UserDataCell.swift in Sources */,
 				3A1AC4AA252FE5F50018C587 /* UserData.swift in Sources */,
 				3AE2750E2519971900A6A691 /* AppDelegate.swift in Sources */,
 				3AE275102519971900A6A691 /* SceneDelegate.swift in Sources */,
