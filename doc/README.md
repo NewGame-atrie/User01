@@ -1,5 +1,7 @@
-#Carthageの導入について
+# Carthageの導入について
+
 ***
+
 ユーザーAPIを使うのでAlamofireでAPIデータを取得するため
 Carthageでライブラリ管理を行う
 
@@ -13,6 +15,7 @@ Carthageでライブラリ管理を行う
 
 手順
 ============
+
 ## ターミナル で下記手順を実行
 
 1. Carthageのインストール
@@ -27,7 +30,7 @@ Carthageでライブラリ管理を行う
 
 でインストール完了
 
-1. ライブラリのインストール
+### 1.ライブラリのインストール
 ***
 Carthageは、Cartfileに記載されたライブラリをインストールする仕様
 
@@ -84,11 +87,13 @@ iTunesConnectの不具合を回避するために必須
 `import Alamofire`
 をコードで書いてエラーが発生しなかったら完成
 
-参考URL
-https://qiita.com/tsuzuki817/items/8f6e2e0c2b3f9d197097
-https://qiita.com/fuwamaki/items/5e6e9c18e5a0b1d7199e
-https://qiita.com/ashdik/items/689f7659050aba300fce
-https://qiita.com/0126/items/5d401acc219ac4f172d6	
+
+**参考URL**
+
+- https://qiita.com/tsuzuki817/items/8f6e2e0c2b3f9d197097
+- https://qiita.com/fuwamaki/items/5e6e9c18e5a0b1d7199e
+- https://qiita.com/ashdik/items/689f7659050aba300fce
+- https://qiita.com/0126/items/5d401acc219ac4f172d6	
 
 #Alomofireの利用法について
 

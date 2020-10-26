@@ -59,6 +59,8 @@ class UserSearchViewController: UIViewController {
     //検索実行
     func search(_ query : String){
         
+        
+        
         let url = "https://api.github.com/search/users?q=\(query)"
         
         
@@ -160,7 +162,7 @@ extension UserSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        //データを取り出す
+        //ユーザーデータを取り出す
         let userData : UserData = self.userList[indexPath.row]
 
         //UserDetailViewのインスタンスを作る

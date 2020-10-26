@@ -11,6 +11,8 @@
 		3A1AC4AA252FE5F50018C587 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1AC4A9252FE5F50018C587 /* UserData.swift */; };
 		3A28A6BF252B64BA0091D7DC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A28A6BE252B64BA0091D7DC /* Alamofire.framework */; };
 		3A4C7A29254254B600C26271 /* UserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C7A28254254B600C26271 /* UserDataCell.swift */; };
+		3A4C7A2D254264A400C26271 /* UserSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C7A2C254264A400C26271 /* UserSearchRepository.swift */; };
+		3A4C7A32254265EB00C26271 /* UserSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C7A31254265EB00C26271 /* UserSearchUseCase.swift */; };
 		3A6EC12A25392FD3006FB826 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6EC12925392FD3006FB826 /* AlamofireImage.framework */; };
 		3AE099602526B28900473C08 /* UserSeachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0995F2526B28900473C08 /* UserSeachViewController.swift */; };
 		3AE2750E2519971900A6A691 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2750D2519971900A6A691 /* AppDelegate.swift */; };
@@ -25,6 +27,8 @@
 		3A1AC4A9252FE5F50018C587 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		3A28A6BE252B64BA0091D7DC /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		3A4C7A28254254B600C26271 /* UserDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataCell.swift; sourceTree = "<group>"; };
+		3A4C7A2C254264A400C26271 /* UserSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchRepository.swift; sourceTree = "<group>"; };
+		3A4C7A31254265EB00C26271 /* UserSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchUseCase.swift; sourceTree = "<group>"; };
 		3A6EC12925392FD3006FB826 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		3AB52D3F252CB727003BB63B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3AE0995F2526B28900473C08 /* UserSeachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeachViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +99,22 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		3A4C7A2B2542648C00C26271 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				3A4C7A2C254264A400C26271 /* UserSearchRepository.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		3A4C7A30254265D900C26271 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				3A4C7A31254265EB00C26271 /* UserSearchUseCase.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		3AE275012519971900A6A691 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +136,8 @@
 		3AE2750C2519971900A6A691 /* User01 */ = {
 			isa = PBXGroup;
 			children = (
+				3A4C7A30254265D900C26271 /* Domain */,
+				3A4C7A2B2542648C00C26271 /* DataStore */,
 				3A1AC4AE252FE71E0018C587 /* Resources */,
 				3A1AC4AD252FE7030018C587 /* Model */,
 				3A1AC4AC252FE6CE0018C587 /* View */,
@@ -225,6 +247,8 @@
 				3AE099602526B28900473C08 /* UserSeachViewController.swift in Sources */,
 				3A4C7A29254254B600C26271 /* UserDataCell.swift in Sources */,
 				3A1AC4AA252FE5F50018C587 /* UserData.swift in Sources */,
+				3A4C7A2D254264A400C26271 /* UserSearchRepository.swift in Sources */,
+				3A4C7A32254265EB00C26271 /* UserSearchUseCase.swift in Sources */,
 				3AE2750E2519971900A6A691 /* AppDelegate.swift in Sources */,
 				3AE275102519971900A6A691 /* SceneDelegate.swift in Sources */,
 			);
