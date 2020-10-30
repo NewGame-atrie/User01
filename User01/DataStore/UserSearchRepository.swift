@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol UserSearchRepositoryDelegate : class {
     func onSearchiFinish(_ data : [String:Any])
+    func onSearchiError(_ error : Error)
 }
 
 class UserSearchRepository {
@@ -17,7 +19,47 @@ class UserSearchRepository {
     weak var delegate : UserSearchRepositoryDelegate?
     
     func search(_ query : String){
-        self.delegate?.onSearchiFinish([:])
+        
+        let url = "https://api.github.com/search/users?q=\(query)"
+        
+        
+        AF.request(url, method: .get)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            
+            .responseJSON { response in
+                
+                switch response.result{
+                    case.success:
+                        if let data = response.value {
+                            self.onSuccess(data)
+                        }
+                        break
+                    
+                    case let .failure(error):
+                        self.onError(error)
+                        break
+                }
+            }
+        
+        
+       
+    }
+    
+    private func onSuccess(_ value : Any){
+        
+        guard let value = value as? [String:Any] else {
+            return
+        }
+        
+        self.delegate?.onSearchiFinish(value)
+        
+    }
+    
+    private func onError(_ error : Error){
+        
+        self.delegate?.onSearchiError(error)
+        
     }
     
 }
