@@ -124,7 +124,7 @@ extension UserSearchViewController: UITableViewDelegate {
     }
 }
 
-
+// MARK: - UserSearchRepositoryDelegate
 extension UserSearchViewController: UserSearchRepositoryDelegate {
    
     func onSearchFinish(_ data: [String : Any]) {
