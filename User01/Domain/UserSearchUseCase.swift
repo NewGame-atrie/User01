@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+protocol UserSearchUseCaseDelegate : class {
+    func onSearchSuccess(_ data : [UserData])
+    func onSearchEmpty()
+    func onSearchError()
+}
+
+class UserSearchUseCase {
+    
+    func search(_ query : String){
+        
+    }
+    
+}

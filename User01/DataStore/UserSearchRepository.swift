@@ -10,8 +10,8 @@ import Foundation
 import Alamofire
 
 protocol UserSearchRepositoryDelegate : class {
-    func onSearchiFinish(_ data : [String:Any])
-    func onSearchiError(_ error : Error)
+    func onSearchFinish(_ data : [String:Any])
+    func onSearchError(_ error : Error)
 }
 
 class UserSearchRepository {
@@ -52,13 +52,13 @@ class UserSearchRepository {
             return
         }
         
-        self.delegate?.onSearchiFinish(value)
+        self.delegate?.onSearchFinish(value)
         
     }
     
     private func onError(_ error : Error){
         
-        self.delegate?.onSearchiError(error)
+        self.delegate?.onSearchError(error)
         
     }
     
