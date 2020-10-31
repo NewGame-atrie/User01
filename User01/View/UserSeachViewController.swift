@@ -16,6 +16,8 @@ class UserSearchViewController: UIViewController {
     var tableView: UITableView!
 
     private var searchController: UISearchController!
+    
+    var searchRepository : UserSearchRepository = UserSearchRepository()
 
     //var userList : [[String:Any]] = []
     var userList : [UserData] = []
@@ -35,6 +37,9 @@ class UserSearchViewController: UIViewController {
         self.tableView.register(UserDataCell.self, forCellReuseIdentifier: "UserDataCell")
         
         setupSearch()
+        
+        
+        self.searchRepository.delegate = self
     }
 
     // MARK: Private Methods
@@ -56,64 +61,6 @@ class UserSearchViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = true
     }
     
-    //検索実行
-    func search(_ query : String){
-        
-        
-        
-        let url = "https://api.github.com/search/users?q=\(query)"
-        
-        
-        AF.request(url, method: .get)
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
-            
-            .responseJSON { response in
-                
-                switch response.result{
-                    case.success:
-                    print("OK")
-                    let data = response.value
-                    print("JSON=\(data)")
-                    break
-                    
-                    case let .failure(error):
-                    print("エラー")
-                    print(error)
-                }
-                debugPrint(response)
-                if let value = response.value {
-                    self.onSuccess(value)
-                }
-            }
-    }
-    
-    //検索結果を受け取ってデータ更新する
-    func onSuccess(_ value : Any){
-        
-        print(value)
-        
-        guard let value = value as? [String:Any],
-              let items = value["items"] as? [[String:Any]] else {
-            
-            return
-        }
-        
-        //var result : [[String:Any]] = []
-        var result : [UserData] = []
-        
-        
-        for i in items {
-            let user = UserData.convert(i)
-            result.append(user)
-        }
-        
-        self.userList = result
-        
-        //reload tableview
-        self.tableView.reloadData()
-        
-    }
 }
 
 // MARK: - UISearchResultsUpdating
@@ -136,7 +83,7 @@ extension UserSearchViewController: UISearchBarDelegate {
             return
         }
         
-        self.search(searchText)
+        self.searchRepository.search(searchText)
         
     }
 }
@@ -175,4 +122,55 @@ extension UserSearchViewController: UITableViewDelegate {
         self.navigationController?.pushViewController(detail, animated: true)
         
     }
+}
+
+
+extension UserSearchViewController: UserSearchRepositoryDelegate {
+   
+    func onSearchFinish(_ data: [String : Any]) {
+        
+        guard let items = data["items"] as? [[String:Any]] else {
+            return
+        }
+        
+        var result : [UserData] = []
+        
+        for i in items {
+            let user = UserData.convert(i)
+            result.append(user)
+        }
+        
+        self.userList = result
+        
+        //reload tableview
+        self.tableView.reloadData()
+        
+        // ０件の時にアラートを出す
+        if self.userList.count < 1 {
+            self.showAlert("検索結果は、0件です")
+        }
+        
+    }
+    
+    func onSearchError(_ error: Error) {
+        self.showAlert("通信エラー")
+    }
+    
+    func showAlert(_ message : String){
+        let alert: UIAlertController = UIAlertController(title: "エラー", message: message, preferredStyle:  UIAlertController.Style.alert)
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler:{
+            // キャンセルボタンが押された時の処理をクロージャ実装する
+            (action: UIAlertAction!) -> Void in
+            
+        })
+        
+        //UIAlertControllerにキャンセルボタンを追加
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+
+    }
+    
+    
 }
