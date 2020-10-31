@@ -35,8 +35,6 @@ class UserDataCell: UITableViewCell {
         
         self.textLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         self.detailTextLabel?.textColor = UIColor.gray
-        
-        //self.imageView?.image = UIImage(named: "loading")
         self.imageView?.clipsToBounds = true
         self.imageView?.contentMode = .scaleAspectFit
         self.imageView?.frame.size = CGSize(width: 64, height: 64)
