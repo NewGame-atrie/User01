@@ -1,8 +1,4 @@
-Tips
-===============
-
 ## 画面遷移
-˜
 ```
 self.navigationController?.pushViewController(
 	次の画面のインスタンス,
@@ -18,18 +14,73 @@ self.navigationController?.pushViewController(
 )
 ```
 
-## UITableViewCell
+## カスタムセル
 
 ```
-cell.textLabel?.text = userData.name　//ユーザー名
-cell.detailTextLabel?.text = userData.type　//詳細テキスト
-cell.imageView?.image = UIImage(userData.icon)
-cell.imageView?.clipsToBounds = true　//UIImage	View内で画像を表示
-cell.imageView?.contentMode = .scaleAspectFit　//回転しても画像が崩さない
-cell.imageView?.frame.size = CGSize(width: 64, height: 64) //サイズの指定
+class UserDataCell: UITableViewCell {
+    
+    var user : UserData? {
+        didSet {
+            self.configure()
+        }
+    }
+    init(){
+        super.init(style: .subtitle, reuseIdentifier: "UserDataCell")
+    }
+    
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        self.setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    /* */
+    
+    private func setup(){
+        
+        self.textLabel?.font = UIFont.boldSystemFont(ofSize: 13)
+        self.detailTextLabel?.textColor = UIColor.gray
+        
+        //UIImage	View内で画像を表示
+        self.imageView?.clipsToBounds = true
+        
+        //回転しても画像が崩さない
+        self.imageView?.contentMode = .scaleAspectFit
+        
+        //サイズの指定
+        self.imageView?.frame.size = CGSize(width: 64, height: 64)
+        
+        self.setNeedsLayout()
+    }
+    
+    private func configure(){
+        
+        guard let user : UserData = self.user else {
+            return
+        }
+        
+        //title
+        self.textLabel?.text = user.name
+        
+        //type
+        self.detailTextLabel?.text = user.type
+        
+        //image
+        self.imageView?.image = UIImage(named: "loading")
+        if let icon = user.icon, let imageUrl = URL(string: icon) {
+            self.imageView?.af.setImage(withURL: imageUrl)
+        }
+        
+        
+    }
+}
 ```
 
-##セルを選択した時の動作の処理
+## セルを選択した時の動作の処理
 
 ```
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -40,7 +91,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 ```
 
 
-##行を選択したら、画面遷移
+## 行を選択したら、画面遷移
 
 ```
 extension UserSearchViewController: UITableViewDelegate {
@@ -66,7 +117,7 @@ extension UserSearchViewController: UITableViewDelegate {
 ```
 
 
-#＃セルをTable Viewに表示
+## セルをTable Viewに表示
 
 ```
 extension UserSearchViewController: UITableViewDataSource {
@@ -90,7 +141,7 @@ extension UserSearchViewController: UITableViewDataSource {
 ```
 
 
-##WebViewで詳細画面を表示
+## WebViewで詳細画面を表示
 
 ```
 import UIKit
@@ -127,4 +178,5 @@ class UserDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
 ```
 
 **参考URL**
+
 - https://rc-code.info/ios/post-241/
