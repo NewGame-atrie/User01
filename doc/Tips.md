@@ -350,3 +350,6 @@ class UserData {
 **参考URL**
 
 - https://www.paveway.info/entry/2019/01/13/swift_search
+- https://qiita.com/netetahito/items/20e3a1a57fb82525a1f7
+-  https://qiita.com/eKushida/items/5ed6e895f80bb0096ead
+- https://qiita.com/rd0501/items/5aca559df3423335fe40
