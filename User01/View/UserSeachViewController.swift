@@ -71,7 +71,7 @@ extension UserSearchViewController: UISearchResultsUpdating {
     }
 }
 
-// MARK: - UISearchResultsUpdating
+// MARK: - UISearchBarDelegate
 extension UserSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
