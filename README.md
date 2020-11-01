@@ -166,7 +166,7 @@ https://qiita.com/uhooi/items/6a41a623b13f6ef4ddf0
 
 - [Carthageの導入について](https://github.com/NewGame-atrie/User01/blob/master/doc/%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.md#carthage%E3%81%AE%E5%B0%8E%E5%85%A5%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
-- [Alamofireの利用法について](https://github.com/NewGame-atrie/User01/blob/master/doc/%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.md#alomofire%E3%81%AE%E5%88%A9%E7%94%A8%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
+- [Alamofireの利用法について](https://github.com/NewGame-atrie/User01/blob/master/doc/%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.md#alamofire%E3%81%AE%E5%88%A9%E7%94%A8%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
 - [Tips](https://github.com/NewGame-atrie/User01/blob/master/doc/Tips.md)
 
