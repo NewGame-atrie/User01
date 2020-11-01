@@ -61,11 +61,17 @@ CleanArchtectureの「Presentation」レイヤーを担ってるため、【User
 ***参考URL***
 
 https://github.com/sergdort/CleanArchitectureRxSwift
+
 https://qiita.com/knagauchi/items/8c9fb93520b56fd3a564
+
 https://qiita.com/shinkuFencer/items/f2651073fb71416b6cd7
+
 https://qiita.com/koutalou/items/07a4f9cf51a2d13e4cdc
+
 https://qiita.com/fr0g_fr0g/items/2a71d055af4824e94bff
+
 https://gist.github.com/mpppk/609d592f25cab9312654b39f1b357c60
+
 https://blog.tai2.net/the_clean_architecture.html
 
 
