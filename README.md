@@ -83,6 +83,8 @@ https://blog.tai2.net/the_clean_architecture.html
 
 # 利用したツールとライブラリ
 
+選定理由を下部【その他】のリンク先に記載をしております。
+
 ## API
 
 - [Github](https://developer.github.com/v3/search/#search-users)
