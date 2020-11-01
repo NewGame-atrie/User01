@@ -78,7 +78,7 @@ https://blog.tai2.net/the_clean_architecture.html
 
 ## API
 
-[Github](https://developer.github.com/v3/search/#search-users)
+- [Github](https://developer.github.com/v3/search/#search-users)
 
 ## ツール
 
@@ -114,6 +114,7 @@ XcodeGenと同じようにymlファイルの作成が必要なので今回は対
 ***参考URL***
 
 https://qiita.com/uhooi/items/bf888b53b4b8210108aa
+
 https://qiita.com/OSR108/items/4b23b13bd23feada1921
 
 - [LicensePlist](https://github.com/mono0926/LicensePlist)
@@ -137,6 +138,7 @@ Xcodeのために作られたコード生成ツール
 ***参考URL***
 
 https://qiita.com/uhooi/items/c216b83fe462c863ff92
+
 https://qiita.com/YKEI_mrn/items/d1f79ceddf6e009fdcd0
 
 
