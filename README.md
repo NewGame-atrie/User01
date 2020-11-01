@@ -7,10 +7,10 @@
 アプリケーションの本体
 
 - モジュール
- - View　ViewControllerを設置
- - DataStore 　APIとの通信を行うデータ層
- - Domain　UseCaseがあるドメイン層
- - Model　Viewで表示する変換したデータ
+	- View　ViewControllerを設置
+	- DataStore 　APIとの通信を行うデータ層
+	- Domain　UseCaseがあるドメイン層
+	- Model　Viewで表示する変換したデータ
 
 ## 各モジュールについて
 
