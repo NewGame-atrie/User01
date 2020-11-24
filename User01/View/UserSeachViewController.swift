@@ -36,10 +36,17 @@ class UserSearchViewController: UIViewController {
         //cellの登録
         self.tableView.register(UserDataCell.self, forCellReuseIdentifier: "UserDataCell")
         
+       self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "CollectionView", style: .plain, target:  self, action: #selector(onPressBtnCollectionView(_:)))
+        
         setupSearch()
         
-        
         self.searchRepository.delegate = self
+    }
+    
+    @objc func onPressBtnCollectionView(_ sender : Any){
+        let next = UIViewController()
+        //next.items = self.userList
+        self.navigationController?.pushViewController(next, animated: true)
     }
 
     // MARK: Private Methods
@@ -164,13 +171,10 @@ extension UserSearchViewController: UserSearchRepositoryDelegate {
             (action: UIAlertAction!) -> Void in
             
         })
-        
         //UIAlertControllerにキャンセルボタンを追加
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
 
     }
-    
-    
 }
