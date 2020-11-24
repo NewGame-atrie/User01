@@ -21,7 +21,7 @@ class UserCollectionViewController: UIViewController{
 }
 
 extension UserCollectionViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionVIew: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return userList.count
     }
     
