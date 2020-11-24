@@ -9,6 +9,7 @@
 import UIKit
 
 class UserData {
+    
     var name : String?
     var url : String?
     var type : String?
@@ -17,15 +18,40 @@ class UserData {
     //Githubのデータを変換する
     //let user = UserData.convert(data)
     static func convert(_ data : [String:Any]) -> UserData {
+        
         let userData = UserData()
         
-        userData.name = data["login"] as? String
-        userData.url = data["html_url"] as? String
-        userData.type = data["type"] as? String
-        userData.icon = data["avatar_url"] as? String
-
+        //userData.name = data["login"] as? String
+        //userData.url = data["html_url"] as? String
+        //userData.type = data["type"] as? String
+        //userData.icon = data["avatar_url"] as? String
         
+        do {
+            let decorder = JSONDecoder()
+            decorder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            let json = try JSONSerialization.data(withJSONObject: data, options: [])
+            let converted = try decorder.decode(UserDataCodable.self, from: json)
+            
+            userData.name = converted.login
+            userData.url = converted.htmlUrl
+            userData.type = converted.type
+            userData.icon = converted.avatarUrl
+            
+        } catch {
+            print("json decode error:\(error)")
+        }
+
         return userData
     }
+    
+}
+
+class UserDataCodable : Decodable {
+    
+    var login : String
+    var htmlUrl : String
+    var type : String
+    var avatarUrl : String
     
 }
