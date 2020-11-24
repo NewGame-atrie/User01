@@ -22,11 +22,9 @@ class UserSearchRepository {
         
         let url = "https://api.github.com/search/users?q=\(query)"
         
-        
         AF.request(url, method: .get)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
-            
             .responseJSON { response in
                 
                 switch response.result{
@@ -41,8 +39,6 @@ class UserSearchRepository {
                         break
                 }
             }
-        
-        
        
     }
     
