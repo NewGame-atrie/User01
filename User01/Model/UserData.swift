@@ -21,11 +21,6 @@ class UserData {
         
         let userData = UserData()
         
-        //userData.name = data["login"] as? String
-        //userData.url = data["html_url"] as? String
-        //userData.type = data["type"] as? String
-        //userData.icon = data["avatar_url"] as? String
-        
         do {
             let decorder = JSONDecoder()
             decorder.keyDecodingStrategy = .convertFromSnakeCase
