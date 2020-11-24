@@ -17,6 +17,8 @@ class UserCollectionViewController: UIViewController{
         super.viewDidLoad()
         
         collectionView.dataSource = self
+        
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
 }
 
@@ -26,8 +28,8 @@ extension UserCollectionViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell : UserDataCell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserDataCell", for: indexPath) as! UserDataCell
-        cell.user = self.userList[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        cell.userList.icon = self.userList[indexPath.row]
         
         return cell
     }
