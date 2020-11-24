@@ -25,7 +25,6 @@ class UserDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
         let conf = WKWebViewConfiguration()
         
         self.webView = WKWebView(frame: self.view.bounds, configuration: conf)
-        
         self.webView.uiDelegate = self
         self.webView.navigationDelegate = self
         
