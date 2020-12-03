@@ -21,6 +21,8 @@
 		3AE275152519971900A6A691 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE275132519971900A6A691 /* Main.storyboard */; };
 		3AE275172519971D00A6A691 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE275162519971D00A6A691 /* Assets.xcassets */; };
 		3AE2751A2519971D00A6A691 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE275182519971D00A6A691 /* LaunchScreen.storyboard */; };
+		3AF7580D25707E6700BBC5B0 /* UserDataCollectionViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF7580C25707E6700BBC5B0 /* UserDataCollectionViewCell2.xib */; };
+		3AF7581025707E8500BBC5B0 /* UserDataCollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7580F25707E8500BBC5B0 /* UserDataCollectionViewCell2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		3AE275162519971D00A6A691 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AE275192519971D00A6A691 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AE2751B2519971D00A6A691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AF7580C25707E6700BBC5B0 /* UserDataCollectionViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDataCollectionViewCell2.xib; sourceTree = "<group>"; };
+		3AF7580F25707E8500BBC5B0 /* UserDataCollectionViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataCollectionViewCell2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				3A4C7A28254254B600C26271 /* UserDataCell.swift */,
+				3AF7580C25707E6700BBC5B0 /* UserDataCollectionViewCell2.xib */,
+				3AF7580F25707E8500BBC5B0 /* UserDataCollectionViewCell2.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -212,6 +218,7 @@
 			files = (
 				3AE2751A2519971D00A6A691 /* LaunchScreen.storyboard in Resources */,
 				3AE275172519971D00A6A691 /* Assets.xcassets in Resources */,
+				3AF7580D25707E6700BBC5B0 /* UserDataCollectionViewCell2.xib in Resources */,
 				3AE275152519971900A6A691 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A1AC4A7252FE53C0018C587 /* UserDetailViewController.swift in Sources */,
+				3AF7581025707E8500BBC5B0 /* UserDataCollectionViewCell2.swift in Sources */,
 				3AE099602526B28900473C08 /* UserSeachViewController.swift in Sources */,
 				3A763F40256D588400699DBF /* UserCollectionViewController.swift in Sources */,
 				3A4C7A29254254B600C26271 /* UserDataCell.swift in Sources */,

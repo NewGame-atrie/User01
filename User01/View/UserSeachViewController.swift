@@ -44,8 +44,11 @@ class UserSearchViewController: UIViewController {
     }
     
     @objc func onPressBtnCollectionView(_ sender : Any){
-        let next = UIViewController()
-        //next.items = self.userList
+        //let next = UserCollectionViewController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let next = storyboard.instantiateViewController(identifier: "UserCollectionViewController") as! UserCollectionViewController
+        next.userList = self.userList
+        
         self.navigationController?.pushViewController(next, animated: true)
     }
 
@@ -70,6 +73,8 @@ class UserSearchViewController: UIViewController {
     
 }
 
+
+
 // MARK: - UISearchResultsUpdating
 extension UserSearchViewController: UISearchResultsUpdating {
     
@@ -84,14 +89,11 @@ extension UserSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         //検索ボタンが押された時にここが呼ばれます
-        
         //検索ワード
         guard let searchText : String = searchBar.text else {
             return
         }
-        
         self.searchRepository.search(searchText)
-        
     }
 }
 
