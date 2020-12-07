@@ -16,6 +16,7 @@ class UserSearchViewController: UIViewController {
     var tableView: UITableView!
 
     private var searchController: UISearchController!
+    private var resultsController: UserSearchViewController!
     
     var searchRepository : UserSearchRepository = UserSearchRepository()
 
@@ -57,6 +58,8 @@ class UserSearchViewController: UIViewController {
     //検索バーのセットアップ
     private func setupSearch() {
         
+        resultsController = UserSearchViewController()
+                
         //UISearchControllerの作成
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -77,14 +80,28 @@ class UserSearchViewController: UIViewController {
 
 // MARK: - UISearchResultsUpdating
 extension UserSearchViewController: UISearchResultsUpdating {
-    
+
     func updateSearchResults(for searchController: UISearchController) {
-        
+
     }
 }
 
 // MARK: - UISearchBarDelegate
 extension UserSearchViewController: UISearchBarDelegate {
+    
+    internal func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange,replacementText text: String) -> Bool {
+        searchController.searchResultsController?.view.isHidden = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
+            guard let self = self else { return }
+            if let keyword = searchBar.text, !keyword.isEmpty {
+                self.resultsController.userList = self.userList.filter { $0.name(keyword) }
+            } else {
+                self.resultsController.userList = []
+            }
+        }
+        return true
+    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
