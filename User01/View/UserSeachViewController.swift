@@ -89,6 +89,7 @@ extension UserSearchViewController: UISearchResultsUpdating {
 // MARK: - UISearchBarDelegate
 extension UserSearchViewController: UISearchBarDelegate {
     
+    //インクルメンタルサーチ
     internal func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange,replacementText text: String) -> Bool {
         searchController.searchResultsController?.view.isHidden = false
         
