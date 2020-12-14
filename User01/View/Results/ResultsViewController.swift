@@ -15,9 +15,7 @@ protocol ResultsViewControllerDelegate : class {
 
 //履歴機能の実装
 class ResultsViewController : UIViewController, UISearchResultsUpdating, UITableViewDataSource, UITableViewDelegate {
-    
-    var userData : [UserData] = []
-    
+        
     weak var resultsViewControllerDelegate : ResultsViewControllerDelegate? = nil
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
