@@ -10,13 +10,12 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-
 class UserSearchViewController: UIViewController {
 
     var tableView: UITableView!
 
     private var searchController: UISearchController!
-    private var resultsController: UserSearchViewController!
+    private var resultsController : ResultsViewController!
     
     var searchRepository : UserSearchRepository = UserSearchRepository()
 
@@ -37,20 +36,9 @@ class UserSearchViewController: UIViewController {
         //cellの登録
         self.tableView.register(UserDataCell.self, forCellReuseIdentifier: "UserDataCell")
         
-       self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "CollectionView", style: .plain, target:  self, action: #selector(onPressBtnCollectionView(_:)))
-        
         setupSearch()
         
         self.searchRepository.delegate = self
-    }
-    
-    @objc func onPressBtnCollectionView(_ sender : Any){
-        //let next = UserCollectionViewController()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let next = storyboard.instantiateViewController(identifier: "UserCollectionViewController") as! UserCollectionViewController
-        next.userList = self.userList
-        
-        self.navigationController?.pushViewController(next, animated: true)
     }
 
     // MARK: Private Methods
@@ -58,11 +46,12 @@ class UserSearchViewController: UIViewController {
     //検索バーのセットアップ
     private func setupSearch() {
         
-        resultsController = UserSearchViewController()
-                
+        //履歴機能の実装
+        self.resultsController = ResultsViewController()
+        
         //UISearchControllerの作成
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
+        searchController = UISearchController(searchResultsController: self.resultsController)
+        searchController.searchResultsUpdater = self.resultsController
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         
@@ -74,34 +63,42 @@ class UserSearchViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = true
     }
     
-}
-
-
-
-// MARK: - UISearchResultsUpdating
-extension UserSearchViewController: UISearchResultsUpdating {
-
-    func updateSearchResults(for searchController: UISearchController) {
-
+    //検索ワードを履歴機能に保存
+    func saveSearchWord(_ text: String){
+        
+        let userDefaults = UserDefaults.standard
+        
+        if var histories = userDefaults.array(forKey: "Histories") as? [String] {
+            histories.append(text)
+            userDefaults.setValue(histories, forKey: "Histories")
+        }else{
+            userDefaults.setValue([text], forKey: "Histories")
+        }
+        
+        userDefaults.synchronize()
+        
     }
+    
+    //履歴の再更新
+    //新しいワードを昇順にする
+    func loadSearchHistory(){
+        let userDefaults = UserDefaults.standard
+        
+        if let histories = userDefaults.array(forKey: "Histories") as? [String] {
+            self.resultsController.dummyItems = histories.reversed()
+        }
+    }
+    
 }
+
 
 // MARK: - UISearchBarDelegate
 extension UserSearchViewController: UISearchBarDelegate {
     
-    //インクルメンタルサーチ
-    internal func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange,replacementText text: String) -> Bool {
-        searchController.searchResultsController?.view.isHidden = false
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
-            guard let self = self else { return }
-            if let keyword = searchBar.text, !keyword.isEmpty {
-                self.resultsController.userList = self.userList.filter { $0.name(keyword) }
-            } else {
-                self.resultsController.userList = []
-            }
-        }
-        return true
+    //検索バーにカーソルを置くと履歴機能を表示
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.loadSearchHistory()
+        self.searchController.showsSearchResultsController = true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -112,6 +109,8 @@ extension UserSearchViewController: UISearchBarDelegate {
             return
         }
         self.searchRepository.search(searchText)
+        
+        self.searchController.isActive = false
     }
 }
 
@@ -144,6 +143,11 @@ extension UserSearchViewController: UITableViewDelegate {
         
         //deteilの変数にユーザーデータを入れる
         detail.userData = userData
+        
+        //検索履歴のユーザー名を表示
+        if let name = userData.name {
+            self.saveSearchWord(name)
+        }
         
         //画面遷移
         self.navigationController?.pushViewController(detail, animated: true)
