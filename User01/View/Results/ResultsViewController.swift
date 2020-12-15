@@ -15,7 +15,7 @@ protocol ResultsViewControllerDelegate : class {
 
 //履歴機能の実装
 class ResultsViewController : UIViewController, UISearchResultsUpdating, UITableViewDataSource, UITableViewDelegate {
-        
+    
     weak var resultsViewControllerDelegate : ResultsViewControllerDelegate? = nil
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,18 +32,17 @@ class ResultsViewController : UIViewController, UISearchResultsUpdating, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        
+
         self.resultsViewControllerDelegate?.onSelectItem(self, item: filteredItems[indexPath.row])
-        
     }
-    
+
     var dummyItems : [String] = []  {
         didSet {
             self.filteredItems = dummyItems
         }
     }
-    var tableView: UITableView!
     
+    var tableView: UITableView!
     var filteredItems : [String] = []
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -55,12 +54,9 @@ class ResultsViewController : UIViewController, UISearchResultsUpdating, UITable
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = .blue
-        
+
         //TableViewのセットアップ
         self.tableView = UITableView(frame: self.view.bounds, style: .plain)
         self.tableView.delegate = self

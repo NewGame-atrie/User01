@@ -14,8 +14,8 @@ class UserSearchViewController: UIViewController {
 
     var tableView: UITableView!
 
-    private var searchController: UISearchController!
-    private var resultsController : ResultsViewController!
+    private var searchController : UISearchController!
+    private var resultsViewController : ResultsViewController!
     
     var searchRepository : UserSearchRepository = UserSearchRepository()
 
@@ -46,12 +46,12 @@ class UserSearchViewController: UIViewController {
     //検索バーのセットアップ
     private func setupSearch() {
         
-        //履歴機能の実装
-        self.resultsController = ResultsViewController()
+        //履歴機能のインタレスト作る
+        self.resultsViewController = ResultsViewController()
         
         //UISearchControllerの作成
-        searchController = UISearchController(searchResultsController: self.resultsController)
-        searchController.searchResultsUpdater = self.resultsController
+        searchController = UISearchController(searchResultsController: self.resultsViewController)
+        searchController.searchResultsUpdater = self.resultsViewController
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         
@@ -85,7 +85,7 @@ class UserSearchViewController: UIViewController {
         let userDefaults = UserDefaults.standard
         
         if let histories = userDefaults.array(forKey: "Histories") as? [String] {
-            self.resultsController.dummyItems = histories.reversed()
+            self.resultsViewController.dummyItems = histories.reversed()
         }
     }
     
@@ -180,7 +180,6 @@ extension UserSearchViewController: UserSearchRepositoryDelegate {
         if self.userList.count < 1 {
             self.showAlert("検索結果は、0件です")
         }
-        
     }
     
     func onSearchError(_ error: Error) {
@@ -193,12 +192,13 @@ extension UserSearchViewController: UserSearchRepositoryDelegate {
         let cancelAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler:{
             // キャンセルボタンが押された時の処理をクロージャ実装する
             (action: UIAlertAction!) -> Void in
-            
         })
         //UIAlertControllerにキャンセルボタンを追加
         alert.addAction(cancelAction)
-        
         self.present(alert, animated: true, completion: nil)
-
     }
+}
+
+extension UserSearchViewController: ResultsViewControllerDelegate {
+    func onSelectItem(_ vc: ResultsViewController, item: String){}
 }
