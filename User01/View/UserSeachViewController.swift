@@ -58,9 +58,9 @@ class UserSearchViewController: UIViewController {
         // UISearchControllerをUINavigationItemのsearchControllerプロパティにセットする。
         navigationItem.searchController = searchController
 
-        // trueだとスクロールした時にSearchBarを隠す（デフォルトはtrue）
+        // trueだとスクロールした時にSearchBarを隠す
         // falseだとスクロール位置に関係なく常にSearchBarが表示される
-        navigationItem.hidesSearchBarWhenScrolling = true
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     //検索ワードを履歴機能に保存
@@ -200,5 +200,20 @@ extension UserSearchViewController: UserSearchRepositoryDelegate {
 }
 
 extension UserSearchViewController: ResultsViewControllerDelegate {
-    func onSelectItem(_ vc: ResultsViewController, item: String){}
+    
+    func onSelectItem(_ vc: ResultsViewController, item: String){
+        
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            
+            //検索ボタンが押された時にここが呼ばれます
+            //検索ワード
+            guard let searchText : String = searchBar.text else {
+                return
+            }
+            self.searchRepository.search(searchText)
+            
+            self.searchController.isActive = false
+        }
+    }
+    
 }

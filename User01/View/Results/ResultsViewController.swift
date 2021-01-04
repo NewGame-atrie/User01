@@ -8,7 +8,7 @@
 
 import UIKit
 
-//履歴機能のデリゲート
+//履歴機能のプロトコルを宣言
 protocol ResultsViewControllerDelegate : class {
     func onSelectItem( _ vc : ResultsViewController, item : String)
 }
@@ -62,5 +62,6 @@ class ResultsViewController : UIViewController, UISearchResultsUpdating, UITable
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.view.addSubview(self.tableView)
+        
     }
 }

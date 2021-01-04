@@ -38,7 +38,6 @@ class UserDataCell: UITableViewCell {
         self.imageView?.clipsToBounds = true
         self.imageView?.contentMode = .scaleAspectFit
         self.imageView?.frame.size = CGSize(width: 64, height: 64)
-        
         self.setNeedsLayout()
     }
     
